@@ -24,8 +24,10 @@ const ProductPage = () => {
     filter: keyof FilterState,
     value: string | number,
   ) => {
+    
     setFilterState((prevState) => ({
       ...prevState,
+      //@ts-ignore
       [filter]: prevState[filter].includes(value)
         ? prevState[filter].filter((v) => v !== value)
         : [...prevState[filter], value],
