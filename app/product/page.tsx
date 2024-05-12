@@ -116,7 +116,7 @@ const ProductPage = () => {
         {/* Search Component */}
         <div className="py-10">
           {isLoading ? (
-            <Skeleton className="h-10 w-full max-w-md" />
+            <Skeleton className="h-10 w-1/2 mx-auto max-w-md" />
           ) : (
             <SearchComponent />
           )}
