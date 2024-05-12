@@ -93,15 +93,18 @@ const SearchComponent = () => {
   }, []);
 
   const handleSearch = () => {
-    console.log("handleSearch called");
     if (searchTerm.trim()) {
       const searchQuery = encodeURIComponent(searchTerm.trim());
       router.push(`/product?q=${searchQuery}`);
     }
-    console.log("Search term:", searchTerm);
   };
 
-  console.log("Rendering SearchComponent");
+  const handleLinkClick = (e) => {
+  event.preventDefault(); 
+  setIsOpen(false); 
+};
+
+
 
   return (
     <div className="w-full relative">
@@ -162,7 +165,7 @@ const SearchComponent = () => {
                       key={suggestion.id}
                       className="hover:bg-gray-200 transition-colors duration-200"
                     >
-                      <Link href={suggestion.link}>
+                      <Link href={suggestion.link} onClick={(e) => handleLinkClick(e)}>
                         <CommandItem
                           value={suggestion.name}
                           className="text-[12px]"
