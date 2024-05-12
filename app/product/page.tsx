@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState,  Suspense  } from "react";
 import { useSearchParams } from "next/navigation";
 import ProductList from "@/components/ProductList";
 import Filter from "@/components/Filter";
@@ -169,4 +169,11 @@ const ProductPage = () => {
   );
 };
 
-export default ProductPage;
+export default function ProductPageWrapper() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ProductPage />
+    </Suspense>
+  );
+}
+
