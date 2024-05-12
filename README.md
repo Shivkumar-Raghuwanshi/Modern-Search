@@ -33,7 +33,7 @@ The project is built using cutting-edge technologies to ensure high performance 
 
 - **Next.js 14.2.3**: A popular React framework that enables server-side rendering and generates static websites for React based web applications.
 - **TypeScript**: A statically typed superset of JavaScript that adds types to the language, enhancing code quality and understandability.
-- **Tailwind CSS**: A utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.
+- **Tailwind CSS**: Tailwind CSS, a utility-first CSS framework, is used for styling the application. It allows for rapid UI development and ensures a responsive design.
 - **Shadcn UI**: A comprehensive library of pre-designed components that are ready to use, which helps to build high-quality, accessible design systems and web applications faster.
 - **Vercel**: A cloud platform for static sites and Serverless Functions that fits perfectly with your workflow. It enables developers to host Jamstack websites and web services that deploy instantly, scale automatically, and requires no supervision, all with no configuration.
 
