@@ -90,7 +90,7 @@ const Product: React.FC<ProductData> = ({
         <p className="text-sm text-gray-500">{brand}</p>
         <div className="flex items-center gap-2">
           <p className="text-sm text-gray-500 line-through">Rs. {price}</p>
-          <p className="text-sm font-semibold">Rs. {discountedPrice}</p>
+          <p className="text-sm font-semibold text-blue-500">Rs. {discountedPrice}</p>
         </div>
         <div className="flex items-center">
           {Array.from({ length: Math.floor(rating) }, (_, i) => (
