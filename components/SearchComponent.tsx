@@ -140,7 +140,7 @@ const handleLinkClick = (e:any, link:string) => {
         <div
           key={trend.id}
           onClick={(e) => handleLinkClick(e, trend.link)}
-          className="hover:bg-gray-200 transition-colors duration-200"
+          className="hover:bg-gray-200 transition-colors duration-200 cursor-pointer"
         >
           <CommandItem value={trend.name}>
             <div className="flex flex-col items-center gap-1 justify-center">
@@ -166,7 +166,7 @@ const handleLinkClick = (e:any, link:string) => {
       <div
         key={suggestion.id}
         onClick={(e) => handleLinkClick(e, suggestion.link)}
-        className="hover:bg-gray-200 transition-colors duration-200"
+        className="hover:bg-gray-200 transition-colors duration-200 cursor-pointer"
       >
         <CommandItem value={suggestion.name} className="text-[12px]">
           {suggestion.name}
