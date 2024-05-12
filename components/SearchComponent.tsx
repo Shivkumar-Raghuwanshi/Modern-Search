@@ -99,7 +99,7 @@ const SearchComponent = () => {
     }
   };
 
-const handleLinkClick = (e:any, link) => {
+const handleLinkClick = (e:any, link:string) => {
   e.preventDefault(); // Prevent the default link behavior
   router.push(link); // Navigate to the link
   setIsOpen(false); // Close the ComponentList
