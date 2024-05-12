@@ -1,6 +1,8 @@
 # Modern Search
 You can view the live application here: https://modern-search-kappa.vercel.app/
+## Watch the video by clicking on the thumbnail below:
 
+[![YouTube Video Thumbnail](https://img.youtube.com/vi/ZQvqF2-KYnw/maxresdefault.jpg)](https://www.youtube.com/embed/ZQvqF2-KYnw?si=l_P0hEmhdlcI00Rw)
 ## Table of Contents
 
 1. Overview
