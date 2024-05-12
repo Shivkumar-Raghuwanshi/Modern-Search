@@ -120,6 +120,7 @@ const handleLinkClick = (e:any, link:string) => {
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 handleSearch();
+                setIsOpen(false);
               }
             }}
             onClick={() => setIsOpen(true)}
