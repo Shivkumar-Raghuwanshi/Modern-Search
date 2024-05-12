@@ -138,7 +138,7 @@ const handleLinkClick = (e:any, link) => {
       {trends.map((trend) => (
         <div
           key={trend.id}
-          onClick={(event) => handleLinkClick(e, trend.link)}
+          onClick={(e) => handleLinkClick(e, trend.link)}
           className="hover:bg-gray-200 transition-colors duration-200"
         >
           <CommandItem value={trend.name}>
@@ -164,7 +164,7 @@ const handleLinkClick = (e:any, link) => {
     suggestions.map((suggestion) => (
       <div
         key={suggestion.id}
-        onClick={(event) => handleLinkClick(e, suggestion.link)}
+        onClick={(e) => handleLinkClick(e, suggestion.link)}
         className="hover:bg-gray-200 transition-colors duration-200"
       >
         <CommandItem value={suggestion.name} className="text-[12px]">
