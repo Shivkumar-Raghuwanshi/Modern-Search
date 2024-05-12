@@ -100,7 +100,7 @@ const SearchComponent = () => {
   };
 
   const handleLinkClick = (e:any) => {
-  event.preventDefault(); 
+  e.preventDefault(); 
   setIsOpen(false); 
 };
 
