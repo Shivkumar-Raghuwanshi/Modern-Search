@@ -88,17 +88,15 @@ const ProductPage = () => {
     }
 
     // Filter based on rating
-    if (filterState.rating.length > 0) {
     if (
-      !filterState.rating.some((rating) => {
-        const floor = Math.floor(rating);
-        const ceil = Math.ceil(rating);
-        return product.rating >= floor && product.rating < ceil;
-      })
+      filterState.rating.length > 0 &&
+      !filterState.rating.some(
+        (rating) =>
+          product.rating >= rating - 0.5 && product.rating < rating + 0.5,
+      )
     ) {
       return false;
     }
-  }
 
   return true;
 });
