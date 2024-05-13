@@ -1,5 +1,5 @@
 "use client";
-import React, { useState,  Suspense  } from "react";
+import React, { useState,  Suspense, useEffect  } from "react";
 import { useSearchParams } from "next/navigation";
 import ProductList from "@/components/ProductList";
 import Filter from "@/components/Filter";
@@ -62,15 +62,25 @@ const ProductPage = () => {
     if (
       filterState.priceRange.length > 0 &&
       !filterState.priceRange.some((range) => {
-        if (range === 500) {
-          return product.discountedPrice < 500;
-        } else if (range === 2500) {
-          return product.discountedPrice >= 2000;
-        } else {
-          return (
-            product.discountedPrice >= range - 500 &&
-            product.discountedPrice < range + 500
-          );
+        switch (range) {
+          case 500:
+            return product.discountedPrice < 500;
+          case 2500:
+            return product.discountedPrice >= 2500;
+          case 1000:
+            return (
+              product.discountedPrice >= 500 && product.discountedPrice < 1000
+            );
+          case 1500:
+            return (
+              product.discountedPrice >= 1000 && product.discountedPrice < 1500
+            );
+          case 2000:
+            return (
+              product.discountedPrice >= 1500 && product.discountedPrice < 2000
+            );
+          default:
+            return false;
         }
       })
     ) {
@@ -79,20 +89,21 @@ const ProductPage = () => {
 
     // Filter based on rating
     if (
-      filterState.rating.length > 0 &&
-      !filterState.rating.some(
-        (rating) =>
-          product.rating >= rating - 0.5 && product.rating < rating + 0.5,
-      )
-    ) {
-      return false;
-    }
+    filterState.rating.length > 0 &&
+    !filterState.rating.some((rating) => {
+      const floor = Math.floor(rating);
+      const ceil = Math.ceil(rating);
+      return product.rating >= floor && product.rating < ceil;
+    })
+  ) {
+    return false;
+  }
 
-    return true;
-  });
+  return true;
+});
 
   // Simulate loading data after 2 seconds
-  React.useEffect(() => {
+  useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2000);
