@@ -93,15 +93,19 @@ const SearchComponent = () => {
   }, []);
 
   const handleSearch = () => {
-    console.log("handleSearch called");
     if (searchTerm.trim()) {
       const searchQuery = encodeURIComponent(searchTerm.trim());
       router.push(`/product?q=${searchQuery}`);
     }
-    console.log("Search term:", searchTerm);
   };
 
-  console.log("Rendering SearchComponent");
+const handleLinkClick = (e:any, link:string) => {
+  e.preventDefault(); // Prevent the default link behavior
+  router.push(link); // Navigate to the link
+  setIsOpen(false); // Close the ComponentList
+};
+
+
 
   return (
     <div className="w-full relative">
@@ -116,6 +120,7 @@ const SearchComponent = () => {
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 handleSearch();
+                setIsOpen(false);
               }
             }}
             onClick={() => setIsOpen(true)}
@@ -129,50 +134,46 @@ const SearchComponent = () => {
               className="bg-white rounded-md p-4 z-50 w-full max-w-3xl mt-4"
             >
               <CommandGroup heading="Latest Trends">
-                {trends && (
-                  <div className="flex flex-row space-x-1 overflow-x-auto">
-                    {trends.map((trend) => (
-                      <Link
-                        key={trend.id}
-                        href={trend.link}
-                        className="hover:bg-gray-200 transition-colors duration-200"
-                      >
-                        <CommandItem value={trend.name}>
-                          <div className="flex flex-col items-center gap-1 justify-center">
-                            <div className="w-[127px] h-[190px]">
-                              <Image
-                                src={trend.image}
-                                alt={trend.name}
-                                width={127}
-                                height={190}
-                              />
-                            </div>
-                            <div className="text-[10px]">{trend.name}</div>
-                          </div>
-                        </CommandItem>
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </CommandGroup>
-              <CommandGroup heading="Popular Suggestions">
-                {suggestions &&
-                  suggestions.map((suggestion) => (
-                    <div
-                      key={suggestion.id}
-                      className="hover:bg-gray-200 transition-colors duration-200"
-                    >
-                      <Link href={suggestion.link}>
-                        <CommandItem
-                          value={suggestion.name}
-                          className="text-[12px]"
-                        >
-                          {suggestion.name}
-                        </CommandItem>
-                      </Link>
-                    </div>
-                  ))}
-              </CommandGroup>
+  {trends && (
+    <div className="flex flex-row space-x-1 overflow-x-auto">
+      {trends.map((trend) => (
+        <div
+          key={trend.id}
+          onClick={(e) => handleLinkClick(e, trend.link)}
+          className="hover:bg-gray-200 transition-colors duration-200 cursor-pointer"
+        >
+          <CommandItem value={trend.name}>
+            <div className="flex flex-col items-center gap-1 justify-center">
+              <div className="w-[127px] h-[190px]">
+                <Image
+                  src={trend.image}
+                  alt={trend.name}
+                  width={127}
+                  height={190}
+                />
+              </div>
+              <div className="text-[10px]">{trend.name}</div>
+            </div>
+          </CommandItem>
+        </div>
+      ))}
+    </div>
+  )}
+</CommandGroup>
+<CommandGroup heading="Popular Suggestions">
+  {suggestions &&
+    suggestions.map((suggestion) => (
+      <div
+        key={suggestion.id}
+        onClick={(e) => handleLinkClick(e, suggestion.link)}
+        className="hover:bg-gray-200 transition-colors duration-200 cursor-pointer"
+      >
+        <CommandItem value={suggestion.name} className="text-[12px]">
+          {suggestion.name}
+        </CommandItem>
+      </div>
+    ))}
+</CommandGroup>
               <CommandEmpty>No results found.</CommandEmpty>
             </CommandList>
           </div>
